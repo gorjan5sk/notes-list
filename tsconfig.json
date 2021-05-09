@@ -23,5 +23,5 @@
     "jsx": "react",
     "outDir": "./.ts/"
   },
-  "include": ["src", "scripts"]
+  "include": ["src"]
 }
