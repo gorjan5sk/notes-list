@@ -11,13 +11,15 @@
     "pack": "webpack --mode=production",
     "build": "webpack --mode=development",
     "watch": "webpack --mode=development --watch",
-    "dev": "yarn watch & yarn serve",
+    "dev": "yarn build && yarn watch & yarn serve",
     "clean": "git clean -fdx node_modules build yarn-error.log",
     "serve": "http-server -p 8080 -c-1 ./build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
     "css-loader": "^5.2.4",
     "html-webpack-plugin": "^5.3.1",
     "http-server": "^0.12.3",
@@ -31,5 +33,9 @@
     "typescript": "^4.2.4",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
