@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/view/main/index.tsx",
   devtool: "inline-source-map",
   module: {
     rules: [
@@ -28,8 +28,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Notes List",
-      favicon: "src/favicon.ico",
-      template: "src/index.html",
+      favicon: "src/view/main/favicon.ico",
+      template: "src/view/main/index.html",
     }),
   ],
   resolve: {

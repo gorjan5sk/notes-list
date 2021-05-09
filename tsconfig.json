@@ -21,7 +21,7 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react",
-    "outDir": "./build/"
+    "outDir": "./.ts/"
   },
-  "include": ["src"]
+  "include": ["src", "scripts"]
 }
