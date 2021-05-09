@@ -22,20 +22,28 @@ const noteArb: fc.Arbitrary<Note> = fc
 
 const generateNotes = (n: number) => fc.sample(noteArb, n);
 
-function saveToFile(n: Note[]) {
-  fs.writeFileSync("input-data.json", JSON.stringify(n, null, 2));
+function saveToFile(n: Note[], filename: string) {
+  fs.writeFileSync(filename, JSON.stringify(n, null, 2));
 }
 
-export function seedNotes(n: number) {
+export function seedNotes(filename: string, n: number) {
   const notes = generateNotes(n);
-  saveToFile(notes);
+  saveToFile(notes, filename);
 }
 
-const options = yargs.usage("Usage: -n <number_of_samples>").option("n", {
-  alias: "num",
-  describe: "Number of samples",
-  type: "number",
-  demandOption: true,
-}).argv;
+const opts = yargs
+  .usage("Usage: -n <num_samples> -f <filename>")
+  .option("num", {
+    alias: "n",
+    describe: "Number of samples",
+    type: "number",
+    demandOption: true,
+  })
+  .option("file", {
+    alias: "f",
+    describe: "Filename with path",
+    type: "string",
+    demandOption: true,
+  }).argv;
 
-seedNotes(options.n);
+seedNotes(opts.file, opts.num);

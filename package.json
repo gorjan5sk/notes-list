@@ -12,14 +12,17 @@
     "build": "webpack --mode=development",
     "watch": "webpack --mode=development --watch",
     "dev": "yarn build && yarn watch & yarn serve",
-    "clean": "git clean -fdx node_modules build yarn-error.log",
-    "serve": "http-server -p 8080 -c-1 ./build"
+    "clean": "git clean -fdx build yarn-error.log",
+    "clean-all": "git clean -fdx build yarn-error.log node_modules",
+    "serve": "http-server -p 8080 -c-1 ./build",
+    "seed-data": "ts-node scripts/seed-notes.ts -n 50 -f ./assets/input-data.json"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.2",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.3",
+    "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
     "fast-check": "^2.14.0",
     "html-webpack-plugin": "^5.3.1",

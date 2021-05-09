@@ -4,6 +4,7 @@ export interface Note {
   icon: string;
   tags: string[];
   locked: boolean;
+
   created: Date;
   edited: Date;
 }

@@ -1,8 +1,9 @@
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/view/main/index.tsx",
+  entry: "./src/view/main/main.tsx",
   devtool: "inline-source-map",
   module: {
     rules: [
@@ -26,10 +27,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [{ from: "assets", to: "assets" }],
+    }),
     new HtmlWebpackPlugin({
       title: "Notes List",
-      favicon: "src/view/main/favicon.ico",
-      template: "src/view/main/index.html",
+      template: "./index.html",
     }),
   ],
   resolve: {
