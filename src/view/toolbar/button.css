@@ -1,0 +1,32 @@
+.button {
+  box-sizing: border-box;
+  height: 51px;
+  width: 51px;
+  border-radius: 50%;
+
+  border: 2px solid #dfe1e4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-icon {
+  font-size: 27px;
+}
+
+.button-normal {
+  color: #72767e;
+}
+.button-normal:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.button-primary {
+  background: #086dd6;
+  color: white;
+}
+.button-primary:hover {
+  background: #5799db;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}

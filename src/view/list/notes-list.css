@@ -1,0 +1,14 @@
+.notes-component {
+  display: flex;
+  flex-flow: column;
+  width: 378px;
+
+  background: white;
+}
+
+/* Notes list */
+.notes-list-component {
+}
+
+.note-component {
+}
