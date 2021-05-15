@@ -15,7 +15,10 @@
     "clean": "git clean -fdx build yarn-error.log",
     "clean-all": "git clean -fdx build yarn-error.log node_modules",
     "serve": "http-server -p 8080 -c-1 ./build",
-    "seed-data": "ts-node scripts/seed-notes.ts -n 50 -f ./assets/input-data.json"
+    "seed-data": "ts-node scripts/seed-notes.ts -n 50 -f ./assets/input-data.json",
+    "gh-pages:prepare": "yarn clean && yarn install && yarn build",
+    "gh-pages:copy": "mkdir docs && cpx './build/**/*' 'docs'",
+    "gh-pages": "yarn gh-pages:prepare && yarn gh-pages:copy"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
@@ -24,6 +27,7 @@
     "@types/react-dom": "^17.0.3",
     "@types/uuid": "^8.3.0",
     "copy-webpack-plugin": "^8.1.1",
+    "cpx": "^1.5.0",
     "css-loader": "^5.2.4",
     "fast-check": "^2.14.0",
     "html-webpack-plugin": "^5.3.1",
