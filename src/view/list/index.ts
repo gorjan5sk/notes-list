@@ -1,1 +1,1 @@
-export { NotesListComponent } from "./notes-list";
+export { NotesListComponent } from "./notes";

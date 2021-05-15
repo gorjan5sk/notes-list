@@ -1,0 +1,132 @@
+.notes-list-component {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+
+  /* for Firefox */
+  min-height: 0;
+}
+
+.note-component {
+  display: flex;
+  flex-direction: row;
+
+  box-sizing: border-box;
+  padding: 19px 19px 19px 15px;
+  border-left: 4px solid white;
+}
+
+.note-component-selected {
+  background: #f4f5f7;
+  border-left: 4px solid #086dd6;
+}
+
+.note-icon,
+.note-private {
+  box-sizing: border-box;
+  min-width: 21.3px;
+  min-height: 21.3px;
+  width: 21.3px;
+  height: 21.3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note-icon {
+  margin: 5px 16px 2px 2px;
+}
+
+.note-private {
+  margin: 5px 2px 2px 16px;
+}
+
+.note-content {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-title {
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 28px;
+  color: #19191c;
+
+  margin: 2px 0px 2px 0px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-body {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 25.6px;
+  color: #19191c;
+
+  box-sizing: border-box;
+  margin: 2px 0px 2px 0px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-date {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #515357;
+
+  margin: 5px 0px 5px 0px;
+}
+
+.note-divider-offset {
+  box-sizing: border-box;
+  margin-left: 58px;
+}
+
+.note-tags-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.note-tag {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  box-sizing: border-box;
+  background: rgba(187, 190, 196, 0.24);
+  border-radius: 3.2px;
+  padding: 2px 6.6px 2px 6.6px;
+  margin-top: 4px;
+  margin-right: 6.4px;
+}
+
+.note-tag-icon {
+  color: #c4c4c4;
+  margin-right: 6.6px;
+}
+
+.note-tag-text {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #19191c;
+}

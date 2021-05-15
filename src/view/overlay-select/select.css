@@ -1,0 +1,21 @@
+.select-overlay {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 410px;
+  height: 77px;
+  background: white;
+  border-radius: 6.4px;
+
+  color: #19191c;
+  box-shadow: 0px 6px 13px rgba(0, 0, 0, 0.12), 0px 3px 13px rgba(0, 0, 0, 0.04);
+
+  font-size: 22.5px;
+  line-height: 28.8px;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}

@@ -41,6 +41,34 @@
   src: url("./Lato/Lato-Italic.ttf") format("truetype");
 }
 
+/* Medium */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./Lato/Lato-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 500;
+  src: url("./Lato/Lato-MediumItalic.ttf") format("truetype");
+}
+
+/* Semibold */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./Lato/Lato-Semibold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 600;
+  src: url("./Lato/Lato-SemiboldItalic.ttf") format("truetype");
+}
+
 /* Bold */
 @font-face {
   font-family: "Lato";

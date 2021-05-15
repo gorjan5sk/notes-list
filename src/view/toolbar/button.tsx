@@ -10,13 +10,17 @@ type ButtonType = "primary" | "normal";
 interface RoundButtonProps {
   type: ButtonType;
   icon: IconDefinition;
+  onClick: () => void;
 }
 
 const deriveClass = (type: ButtonType) =>
   type === "primary" ? "button-primary" : "button-normal";
 
 export const RoundButton: React.FC<RoundButtonProps> = (p) => (
-  <div className={`button ${deriveClass(p.type)}`}>
+  <button
+    className={`button ${deriveClass(p.type)}`}
+    onClick={() => p.onClick()}
+  >
     <Icon className="button-icon" icon={p.icon} />
-  </div>
+  </button>
 );

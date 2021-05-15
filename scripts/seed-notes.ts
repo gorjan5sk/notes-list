@@ -1,28 +1,83 @@
-import { Note } from "../src/model";
+import {
+  CodeData,
+  CommonNoteData,
+  noteTypes,
+  PlainTextData,
+  RichTextData,
+  SpreadsheetData,
+  TokenVaultData,
+  NewNoteData,
+  TaggedNoteData,
+} from "../src/domain";
+
 import * as fc from "fast-check";
 import * as fs from "fs";
 import * as yargs from "yargs";
 
-const oneWord = fc.lorem({ maxCount: 1 });
+const tag = fc.constantFrom(
+  "Food",
+  "Science",
+  "Saturnalia",
+  "Movies",
+  "Music",
+  "Art"
+);
 
-const daysLater = (orig: Date, days: number): Date =>
-  new Date(orig.getTime() + days * 24 * 60 * 60 * 1000);
+const bodyText = fc.lorem({ mode: "sentences", maxCount: 30 });
 
-const noteArb: fc.Arbitrary<Note> = fc
+const tags: fc.Arbitrary<TaggedNoteData> = fc.record({
+  tagLabels: fc.array(tag),
+});
+
+const commonNoteData: fc.Arbitrary<CommonNoteData> = fc.record({
+  title: fc.lorem({ maxCount: 10, mode: "sentences" }),
+  type: fc.constantFrom(...noteTypes),
+  private: fc.boolean(),
+});
+
+const richTextData: fc.Arbitrary<RichTextData> = fc.record({
+  type: fc.constant("rich-text"),
+  document: bodyText,
+});
+
+const codeData: fc.Arbitrary<CodeData> = fc.record({
+  type: fc.constant("code"),
+  code: fc.asciiString({ minLength: 100, maxLength: 200 }),
+});
+
+const plainTextData: fc.Arbitrary<PlainTextData> = fc.record({
+  type: fc.constant("plain-text"),
+  text: bodyText,
+});
+
+const dim = { maxLength: 5, minLength: 5 };
+const spreadsheetData: fc.Arbitrary<SpreadsheetData> = fc.record({
+  type: fc.constant("spreadsheet"),
+  sheet: fc.array(fc.array(fc.integer(), dim), dim),
+});
+
+const tokenVaultData: fc.Arbitrary<TokenVaultData> = fc.record({
+  type: fc.constant("token-vault"),
+  secretData: fc.base64String(),
+});
+
+const newNoteArb: fc.Arbitrary<NewNoteData> = fc
   .record({
-    title: fc.lorem({ maxCount: 30 }),
-    body: fc.lorem(),
-    icon: oneWord,
-    created: fc.date({}),
-    editedDaysLater: fc.nat({}),
-    locked: fc.boolean(),
-    tags: fc.array(oneWord),
+    tagData: tags,
+    commonData: commonNoteData,
+    otherData: fc.oneof(
+      richTextData,
+      plainTextData,
+      codeData,
+      spreadsheetData,
+      tokenVaultData
+    ),
   })
-  .map((n) => ({ ...n, edited: daysLater(n.created, n.editedDaysLater) }));
+  .map((d) => ({ ...d.tagData, ...d.commonData, ...d.otherData }));
 
-const generateNotes = (n: number) => fc.sample(noteArb, n);
+const generateNotes = (n: number) => fc.sample(newNoteArb, n);
 
-function saveToFile(n: Note[], filename: string) {
+function saveToFile(n: NewNoteData[], filename: string) {
   fs.writeFileSync(filename, JSON.stringify(n, null, 2));
 }
 
