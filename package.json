@@ -16,8 +16,8 @@
     "clean-all": "git clean -fdx build yarn-error.log node_modules",
     "serve": "http-server -p 8080 -c-1 ./build",
     "seed-data": "ts-node scripts/seed-notes.ts -n 50 -f ./assets/input-data.json",
-    "gh-pages:prepare": "yarn clean && yarn install && yarn build",
-    "gh-pages:copy": "mkdir docs && cpx './build/**/*' 'docs'",
+    "gh-pages:prepare": "yarn clean && yarn install && yarn pack",
+    "gh-pages:copy": "mkdir gh-pages && cpx './build/**/*' 'gh-pages'",
     "gh-pages": "yarn gh-pages:prepare && yarn gh-pages:copy"
   },
   "devDependencies": {
